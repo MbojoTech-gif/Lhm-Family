@@ -1,7 +1,13 @@
 <?php
 // db.php - Database Connection File
 session_start();
-
+if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1') {
+    // Local development (XAMPP)
+    require_once 'db.php';
+} else {
+    // Production (InfinityFree)
+    require_once 'infinityfreedb.php';
+}
 // Database configuration
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
